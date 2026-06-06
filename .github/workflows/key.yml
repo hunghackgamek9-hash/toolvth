@@ -1,8 +1,6 @@
 name: Daily Key
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
@@ -14,27 +12,17 @@ jobs:
 
       - name: Generate Key
         run: |
-          python3 - << EOF
-          import random
-          import string
-
-          key = "VB-" + ''.join(
-              random.choices(
-                  string.ascii_uppercase + string.digits,
-                  k=10
-              )
-          )
-
-          with open("key.txt", "w") as f:
-              f.write(key)
-
-          print(key)
-          EOF
+          python3 -c "
+import random,string
+key='VB-'+''.join(random.choices(string.ascii_uppercase+string.digits,k=10))
+open('key.txt','w').write(key)
+print(key)
+"
 
       - name: Commit
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add key.txt
-          git commit -m "update key" || exit 0
+          git commit -m 'update key' || true
           git push
