@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TOOL VTH</title>
+</head>
+<body style="text-align:center;margin-top:100px;font-family:Arial">
+
+<h1>TOOL VTH</h1>
+<p>Vui lòng chờ để tải file...</p>
+
+<h2 id="count">10</h2>
+
+<script>
+let t = 10;
+
+let timer = setInterval(function(){
+
+    t--;
+
+    document.getElementById("count").innerHTML = t;
+
+    if(t <= 0){
+
+        clearInterval(timer);
+
+        window.location.href =
+        "https://www.mediafire.com/file/bvppayq2d7z4iqo/TOOLVTH-FREE.py/file";
+
+    }
+
+},1000);
+</script>
+
+</body>
+</html>
