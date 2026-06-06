@@ -3,7 +3,9 @@ name: Daily Key
 permissions:
   contents: write
 
-on:
+  on:
+  schedule:
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
